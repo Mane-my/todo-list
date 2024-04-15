@@ -9,9 +9,7 @@ export default {
 </script>
 
 <template>
-  <main>
-    <TodoList />
-  </main>
+  <main><TodoList /></main>
 </template>
 
 <style scoped></style>
