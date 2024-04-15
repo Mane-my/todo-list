@@ -2,7 +2,6 @@ import './assets/main.css'
 import 'vuetify/styles'
 
 import { createApp } from 'vue'
-// import { BootstrapVue } from 'bootstrap-vue'
 
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -15,6 +14,5 @@ const vuetify = createVuetify({
   directives
 })
 
-// app.use(BootstrapVue)
 app.mount('#app')
 createApp(App).use(vuetify).mount('#app')
