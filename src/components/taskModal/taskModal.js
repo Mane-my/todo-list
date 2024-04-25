@@ -29,23 +29,22 @@ export default {
     }
   },
   methods: {
+    onInput(event) {
+      this.name = event.target.value
+    },
     onClose() {
       this.$emit('close')
     },
     onSave() {
       const newTask = {
+        title: this.title.trim(),
         description: this.description,
-        date: this.dueDate,
-        title: this.title.trim()
+        date: this.dueDate
       }
       if (this.dueDate) {
         newTask.date = this.dueDate.toISOString().slice(0, 10)
       }
       this.$emit('taskSave', newTask)
-
-      // if (this.title !== '') {
-      //   console.log(newTask)
-      // }
     },
     onTitleInput(event) {
       this.title = event.target.value

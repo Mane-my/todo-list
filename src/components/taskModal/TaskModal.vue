@@ -22,7 +22,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn color="warning" text="Close" variant="plain" @click="onClose"></v-btn>
+          <v-btn color="warning" text="Close" variant="plain" @click="onClose"> </v-btn>
 
           <v-btn
             color="success"
@@ -30,7 +30,8 @@
             variant="tonal"
             @click="onSave"
             :disabled="title === ''"
-          ></v-btn>
+          >
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
