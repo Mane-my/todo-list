@@ -34,18 +34,26 @@ export default {
     },
     onSave() {
       const newTask = {
-        title: this.title,
         description: this.description,
-        date: this.dueDate
+        date: this.dueDate,
+        title: this.title.trim()
+      }
+      if (this.dueDate) {
+        newTask.date = this.dueDate.toISOString().slice(0, 10)
       }
       this.$emit('taskSave', newTask)
 
-      if (this.title !== '') {
-        console.log(newTask)
-      }
+      // if (this.title !== '') {
+      //   console.log(newTask)
+      // }
     },
     onTitleInput(event) {
       this.title = event.target.value
+    },
+    computed: {
+      isSaveDisabled() {
+        return !this.title.trim()
+      }
     }
   }
 }
