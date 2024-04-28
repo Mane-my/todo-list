@@ -13,25 +13,21 @@ export default {
   },
   data() {
     return {
-      // dialog: false,
       title: '',
       description: '',
       dueDate: '',
       rules: [
         (value) => {
-          if (value) {
-            return true
-          } else {
+          if (value.trim() === '') {
             return 'You must enter title'
+          } else {
+            return true
           }
         }
       ]
     }
   },
   methods: {
-    onInput(event) {
-      this.name = event.target.value
-    },
     onClose() {
       this.$emit('close')
     },
@@ -48,11 +44,11 @@ export default {
     },
     onTitleInput(event) {
       this.title = event.target.value
-    },
-    computed: {
-      isSaveDisabled() {
-        return !this.title.trim()
-      }
+    }
+  },
+  computed: {
+    isSaveDisabled() {
+      return !this.title.trim()
     }
   }
 }
