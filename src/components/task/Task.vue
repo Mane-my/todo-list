@@ -11,17 +11,26 @@
       {{ data.description }}
     </v-card-text>
 
-    <v-card-text> Status: {{ data.status }} </v-card-text>
+    <v-card-text class="font-weight-bold">
+      Status:
+      <span>{{ data.status }} </span>
+    </v-card-text>
 
-    <v-card-text> Created at: {{ data.created_at }} </v-card-text>
+    <v-card-text class="font-weight-bold">
+      Created at:
+      <span> {{ data.created_at }} </span>
+    </v-card-text>
 
-    <v-card-text> Due date: {{ data.date }} </v-card-text>
+    <v-card-text class="font-weight-bold">
+      Due date:
+      <span>{{ data.date }}</span>
+    </v-card-text>
 
     <div class="btns">
       <v-btn color="green" variant="outlined">
         <v-icon icon="mdi-check-bold" />
       </v-btn>
-      <v-btn color="yellow" text="Edit" variant="outlined">
+      <v-btn color="yellow" text="Edit" variant="outlined" class="editBtn">
         <v-icon icon="mdi-pencil" />
       </v-btn>
       <v-btn color="red" text="Delete" variant="outlined">
@@ -35,9 +44,8 @@
 
 <style scoped>
 .btns {
-  margin: 5px;
-}
-.btns button {
-  margin: 2px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
 }
 </style>
