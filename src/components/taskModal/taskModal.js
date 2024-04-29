@@ -15,16 +15,7 @@ export default {
     return {
       title: '',
       description: '',
-      dueDate: '',
-      rules: [
-        (value) => {
-          if (value.trim() === '') {
-            return 'You must enter title'
-          } else {
-            return true
-          }
-        }
-      ]
+      dueDate: ''
     }
   },
   methods: {
@@ -47,8 +38,8 @@ export default {
     }
   },
   computed: {
-    isSaveDisabled() {
-      return !this.title.trim()
+    isTitleValid() {
+      return !!this.title.trim()
     }
   }
 }

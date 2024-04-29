@@ -13,9 +13,9 @@
 
     <v-card-text> Status: {{ data.status }} </v-card-text>
 
-    <v-card-text> Created at: {{ data.created_at }} </v-card-text>
+    <v-card-text> Created at: {{ createdAt }} </v-card-text>
 
-    <v-card-text> Due date: {{ data.date }} </v-card-text>
+    <v-card-text> Due date: {{ dueDate }} </v-card-text>
 
     <div class="btns">
       <v-btn color="green" variant="outlined">

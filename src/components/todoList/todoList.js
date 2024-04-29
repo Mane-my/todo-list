@@ -38,9 +38,11 @@ export default {
         .then((newTask) => {
           this.tasks.push(newTask)
           this.toggleTaskModal()
+          this.$toast.success('Task has been created successfully!')
         })
         .catch((err) => {
           console.log('err', err)
+          this.$toast.error('yo')
         })
     }
   }
