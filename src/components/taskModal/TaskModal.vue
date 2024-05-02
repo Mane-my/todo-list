@@ -1,11 +1,17 @@
 <template>
   <div class="pa-4 text-center">
     <v-dialog :modelValue="isOpen" @update:modelValue="onClose" max-width="600">
-      <v-card prepend-icon="mdi-account" title="Add new task">
+      <v-card prepend-icon="mdi-account" :title="modalTitle">
         <v-card-text>
           <v-row dense>
             <v-col cols="12" sm="12">
-              <v-text-field label="Title" required v-model="title" :rules="rules"> </v-text-field>
+              <v-text-field
+                label="Title"
+                required
+                v-model="title"
+                :class="{ invalid: !isTitleValid }"
+              >
+              </v-text-field>
             </v-col>
 
             <v-col cols="12" sm="12">
@@ -29,7 +35,7 @@
             text="Save"
             variant="tonal"
             @click="onSave"
-            :disabled="title.trim() === ''"
+            :disabled="!isTitleValid"
           >
           </v-btn>
         </v-card-actions>
@@ -39,3 +45,9 @@
 </template>
 
 <script src="./taskModal.js"></script>
+
+<style>
+.invalid .v-input__control {
+  border: 1px solid red;
+}
+</style>

@@ -16,15 +16,9 @@
       <span>{{ data.status }} </span>
     </v-card-text>
 
-    <v-card-text class="font-weight-bold">
-      Created at:
-      <span> {{ data.created_at }} </span>
-    </v-card-text>
+    <v-card-text> Created at: {{ createdAt }} </v-card-text>
 
-    <v-card-text class="font-weight-bold">
-      Due date:
-      <span>{{ data.date }}</span>
-    </v-card-text>
+    <v-card-text> Due date: {{ dueDate }} </v-card-text>
 
     <div class="btns">
       <v-btn color="green" variant="outlined">
