@@ -3,8 +3,10 @@
     <TaskModal
       v-if="isTaskModalOpen"
       :isOpen="isTaskModalOpen"
+      :editingTask="editingTask"
       @close="toggleTaskModal"
       @taskSave="onTaskSave"
+      @taskAdd="onTaskAdd"
     />
 
     <v-row align="center" justify="center">
@@ -16,8 +18,8 @@
 
   <v-container>
     <v-row>
-      <v-col v-for="taskData in tasks" :key="taskData._id" cols="12" md="4" sm="3" xs="3">
-        <Task :data="taskData" />
+      <v-col v-for="taskData in tasks" :key="taskData._id" cols="12" md="4" sm="6" xs="3">
+        <Task :data="taskData" @taskEdit="onTaskEdit(taskData)" />
       </v-col>
     </v-row>
   </v-container>
