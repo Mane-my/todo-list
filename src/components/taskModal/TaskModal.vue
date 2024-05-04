@@ -7,6 +7,7 @@
             <v-col cols="12" sm="12">
               <v-text-field
                 label="Title"
+                ref="title"
                 required
                 v-model="title"
                 :class="{ invalid: !isTitleValid }"
