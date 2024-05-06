@@ -1,6 +1,6 @@
-import TaskModal from '../taskModal/TaskModal.vue'
-import Task from '../task/Task.vue'
-import TaskApi from '../../utils/taskApi.js'
+import TaskModal from '../../taskModal/TaskModal.vue'
+import Task from '../../task/Task.vue'
+import TaskApi from '../../../utils/taskApi.js'
 
 const taskApi = new TaskApi()
 
@@ -53,6 +53,22 @@ export default {
         })
         .catch(this.handleError)
     },
+    onTaskStatusChange(editedTask) {
+      console.log('yo')
+      taskApi
+        .updateTask(editedTask)
+        .then((updatedTask) => {
+          this.findAndReplaceTask(updatedTask)
+          let message
+          if (updatedTask.status === 'done') {
+            message = 'The task is done!'
+          } else {
+            message = 'The task has been restored'
+          }
+          this.$toast.success(message)
+        })
+        .catch(this.handleError)
+    },
     onTaskSave(editedTask) {
       taskApi
         .updateTask(editedTask)
@@ -72,6 +88,15 @@ export default {
     },
     onTaskEdit(editingTask) {
       this.editingTask = editingTask
+    },
+    onTaskDelete(taskId) {
+      taskApi
+        .deleteTask(taskId)
+        .then(() => {
+          this.tasks = this.tasks.filter((t) => t._id !== taskId)
+          this.$toast.success('Task has been deleted successfully!')
+        })
+        .catch(this.handleError)
     }
   }
 }

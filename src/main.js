@@ -9,6 +9,8 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import ToastPlugin from 'vue-toast-notification'
+
+import { router } from './router.js'
 import App from './App.vue'
 
 const vuetify = createVuetify({
@@ -25,6 +27,7 @@ const vuetify = createVuetify({
 
 const app = createApp(App)
 app.use(vuetify)
+app.use(router)
 app.use(ToastPlugin, {
   duration: 5000,
   position: 'bottom-left',

@@ -16,6 +16,12 @@ export default {
   methods: {
     onEdit() {
       this.$emit('taskEdit')
+    },
+    onDelete() {
+      this.$emit('taskDelete')
+    },
+    onStatusChange() {
+      this.$emit('taskStatusChange')
     }
   }
 }
