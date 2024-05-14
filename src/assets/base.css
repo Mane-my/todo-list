@@ -55,11 +55,15 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-weight: normal;
 }
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
   color: var(--color-text);
   background: var(--color-background);
   transition:

@@ -1,19 +1,26 @@
 <template>
-  <v-card class="mx-auto my-8" elevation="16">
+  <v-card v-if="task" class="mx-auto my-8" elevation="16" cols="12" md="4" sm="6" xs="3">
+    <TaskModal
+      v-if="isEditModalOpen"
+      :isOpen="isEditModalOpen"
+      :editingTask="task"
+      @close="toggleTaskModal"
+      @taskSave="onSave"
+    />
+
     <v-card-item>
-      <v-checkbox @update:modelValue="onSelect" :modelValue="isSelected"> </v-checkbox>
-      <v-card-title>
-        {{ data.title }}
+      <v-card-title class="text-wrap">
+        {{ task.title }}
       </v-card-title>
     </v-card-item>
 
-    <v-card-text class="taskDescription">
-      {{ data.description }}
+    <v-card-text>
+      {{ task.description }}
     </v-card-text>
 
     <v-card-text class="font-weight-bold">
       Status:
-      <span>{{ data.status }} </span>
+      <span>{{ task.status }} </span>
     </v-card-text>
 
     <v-card-text class="font-weight-bold">
@@ -26,23 +33,14 @@
       <span> {{ dueDate }} </span>
     </v-card-text>
 
-    <v-card-text>
-      <RouterLink :to="`/task/${data._id}`">Show more...</RouterLink>
-    </v-card-text>
-
     <div class="btns">
-      <v-btn
-        v-if="data.status === 'active'"
-        color="green"
-        variant="outlined"
-        @click="onStatusChange('done')"
-      >
+      <v-btn color="green" variant="outlined" @click="onStatusChange('done')">
         <v-icon icon="mdi-check-bold" />
       </v-btn>
-      <v-btn v-else color="blue" variant="outlined" @click="onStatusChange('active')">
+      <v-btn color="blue" variant="outlined" @click="onStatusChange('active')">
         <v-icon icon="mdi-restore" />
       </v-btn>
-      <v-btn color="yellow" text="Edit" variant="outlined" class="editBtn" @click="onEdit">
+      <v-btn color="yellow" text="Edit" variant="outlined" class="editBtn" @click="toggleTaskModal">
         <v-icon icon="mdi-pencil" />
       </v-btn>
       <v-btn color="red" text="Delete" variant="outlined" @click="onDelete">
@@ -50,16 +48,12 @@
       </v-btn>
     </div>
   </v-card>
+  <h4 v-else>Task not found!</h4>
 </template>
 
-<script src="./task.js"></script>
+<script src="./singleTask.js"></script>
 
 <style scoped>
-.taskDescription {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
 .btns {
   margin: 10px 0;
   display: flex;

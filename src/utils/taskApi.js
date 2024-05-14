@@ -1,42 +1,28 @@
-class TaskApi {
-  apiHost = 'http://localhost:3001'
+import Api from './api'
 
-  request(url, params) {
-    return fetch(url, params).then(async (res) => {
-      if (res.status >= 500) {
-        throw new Error('Something went wrong, please, try again later!')
-      }
-
-      const result = await res.json()
-      if (res.status >= 300 && result.error) {
-        throw new Error(result.error.message)
-      }
-      return result
-    })
-  }
+class TaskApi extends Api {
+  entityName = 'task'
   addNewTask(task) {
-    const url = `${this.apiHost}/task`
-    const params = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(task)
-    }
-    return this.request(url, params)
+    return this.request('POST', '', task)
   }
   getTasks() {
-    const url = `${this.apiHost}/task`
-    const params = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    return this.request(url, params)
+    return this.request('GET')
   }
-  getSingleTask() {}
-  deleteTask() {}
+  getSingleTask(taskId) {
+    return this.request('GET', taskId)
+  }
+  deleteTask(taskId) {
+    return this.request('DELETE', taskId)
+  }
+  deleteTasks(taskIds) {
+    const body = {
+      tasks: taskIds
+    }
+    return this.request('PATCH', '', body)
+  }
+  updateTask(task) {
+    return this.request('PUT', task._id, task)
+  }
 }
 
 export default TaskApi
