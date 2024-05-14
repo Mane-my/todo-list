@@ -12,7 +12,7 @@ export default {
   methods: {
     async sendForm() {
       const isValid = await this.validate()
-      console.log('isValid', isValid)
+
       if (!isValid) {
         return
       }
@@ -21,10 +21,6 @@ export default {
         emeil: this.email,
         message: this.message
       }
-      // send form
-      // formApi.sendForm(form)
-      // if success this.reset()
-      // show notification
     },
     async validate() {
       const { valid } = await this.$refs.form.validate()

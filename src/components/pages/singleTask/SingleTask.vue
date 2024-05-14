@@ -1,14 +1,5 @@
 <template>
-  <v-card
-    v-if="task"
-    class="mx-auto my-8"
-    elevation="16"
-    width="auto"
-    cols="12"
-    md="4"
-    sm="6"
-    xs="3"
-  >
+  <v-card v-if="task" class="mx-auto my-8" elevation="16" cols="12" md="4" sm="6" xs="3">
     <TaskModal
       v-if="isEditModalOpen"
       :isOpen="isEditModalOpen"
@@ -43,17 +34,12 @@
     </v-card-text>
 
     <div class="btns">
-      <!-- <v-btn
-        v-if="data.status === 'active'"
-        color="green"
-        variant="outlined"
-        @click="onStatusChange('done')"
-      >
+      <v-btn color="green" variant="outlined" @click="onStatusChange('done')">
         <v-icon icon="mdi-check-bold" />
       </v-btn>
-      <v-btn v-else color="blue" variant="outlined" @click="onStatusChange('active')">
+      <v-btn color="blue" variant="outlined" @click="onStatusChange('active')">
         <v-icon icon="mdi-restore" />
-      </v-btn> -->
+      </v-btn>
       <v-btn color="yellow" text="Edit" variant="outlined" class="editBtn" @click="toggleTaskModal">
         <v-icon icon="mdi-pencil" />
       </v-btn>

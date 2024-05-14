@@ -16,13 +16,19 @@
 
     <div class="btns">
       <v-btn variant="plain">
-        <v-icon icon="mdi mdi-facebook" />
+        <a href="https://www.facebook.com/" target="_blank">
+          <v-icon icon="mdi mdi-facebook" />
+        </a>
       </v-btn>
       <v-btn variant="plain">
-        <v-icon icon="mdi mdi-instagram" />
+        <a href="https://www.instagram.com/" target="_blank">
+          <v-icon icon="mdi mdi-instagram" />
+        </a>
       </v-btn>
       <v-btn variant="plain">
-        <v-icon icon="mdi mdi-youtube" />
+        <a href="https://www.linkedin.com" target="_blank">
+          <v-icon icon="mdi mdi-linkedin" />
+        </a>
       </v-btn>
     </div>
 
@@ -39,12 +45,8 @@
 </template>
 
 <style scoped>
-.footerContainer {
-}
-.footer {
-  /* height: 50px;
-  flex-shrink: 0;
-  width: 100%; */
+.btns a {
+  text-decoration: none;
 }
 .footer-links .header-menu {
   color: white;
